@@ -3,6 +3,6 @@ if not status_ok then
   return
 end
 
-require "user.lsp.lsp-installer"
-require("user.lsp.handlers").setup()
-require "user.lsp.null-ls"
+require "edpa.lsp.lsp-installer"
+require("edpa.lsp.handlers").setup()
+require "edpa.lsp.null-ls"
