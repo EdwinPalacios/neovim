@@ -41,64 +41,134 @@ packer.init {
 -- Install your plugins here
 return packer.startup(function(use)
 
+  -- Base packages
   use "lewis6991/impatient.nvim"
   use "nathom/filetype.nvim"
 
-  use "wbthomason/packer.nvim" -- Have packer manage itself
-  use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
-  use "nvim-lua/plenary.nvim" -- Useful lua functions used by lots of plugins
-  use "windwp/nvim-autopairs" -- Autopairs, integrates with both cmp and treesitter
-  use "numToStr/Comment.nvim" -- Easily comment stuff
-  use "kyazdani42/nvim-web-devicons"
+  -- Have packer manage itself
+  use "wbthomason/packer.nvim"
+
+  -- Navigation bar
   use "kyazdani42/nvim-tree.lua"
+  -- Tabs bar
   use "akinsho/bufferline.nvim"
+  -- Bottom bar
+  use {
+    "nvim-lualine/lualine.nvim",
+    requires = { "kyazdani42/nvim-web-devicons", opt = true },
+  }
+
+  -- Better quickfix window in Neovim, polish old quickfix window.
+  use { "kevinhwang91/nvim-bqf", ft = "qf" }
+
+  -- Bookmarks
+  use {
+    "ThePrimeagen/harpoon",
+    requires = {
+      "nvim-lua/plenary.nvim",
+      "nvim-lua/popup.nvim",
+    },
+  }
+
+  use "goolord/alpha-nvim"
+
   use "moll/vim-bbye"
-  use "nvim-lualine/lualine.nvim"
   use "akinsho/toggleterm.nvim"
   use "ahmedkhalf/project.nvim"
-  use "lewis6991/impatient.nvim"
   use "lukas-reineke/indent-blankline.nvim"
-  use "goolord/alpha-nvim"
   use "antoinemadec/FixCursorHold.nvim" -- This is needed to fix lsp doc highlight
   use "folke/which-key.nvim"
 
   -- Colorschemes
-  -- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
-  use "lunarvim/darkplus.nvim"
+  use 'folke/tokyonight.nvim'
 
-  -- cmp plugins
-  use "hrsh7th/nvim-cmp" -- The completion plugin
-  use "hrsh7th/cmp-buffer" -- buffer completions
-  use "hrsh7th/cmp-path" -- path completions
-  use "hrsh7th/cmp-cmdline" -- cmdline completions
-  use "saadparwaiz1/cmp_luasnip" -- snippet completions
-  use "hrsh7th/cmp-nvim-lsp"
+  -- Completition
+  use {
+    "hrsh7th/nvim-cmp",
+    requires = {
+      "hrsh7th/cmp-buffer",
+      "hrsh7th/cmp-path",
+      "hrsh7th/cmp-cmdline",
+      "hrsh7th/cmp-nvim-lua",
+      "hrsh7th/cmp-nvim-lsp",
+      "saadparwaiz1/cmp_luasnip",
+      "onsails/lspkind-nvim",
+      -- snippets
+      "L3MON4D3/LuaSnip",
+      "windwp/nvim-autopairs",
+    },
+  }
+
+  -- Easily comment stuff
+  use "numToStr/Comment.nvim"
 
   -- snippets
-  use "L3MON4D3/LuaSnip" --snippet engine
   use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
 
   -- LSP
-  use "neovim/nvim-lspconfig" -- enable LSP
-  use "williamboman/nvim-lsp-installer" -- simple to use language server installer
-  use "tamago324/nlsp-settings.nvim" -- language server settings defined in json for
-  use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
+  use {
+    "neovim/nvim-lspconfig", -- enable LSP
+    "williamboman/nvim-lsp-installer", -- simple to use language server installer
+    "hrsh7th/cmp-nvim-lsp-signature-help",
+    "jose-elias-alvarez/null-ls.nvim", -- for formatters and linters
+    "tamago324/nlsp-settings.nvim", -- language server settings defined in json for
+  }
 
   -- Telescope
-  use "nvim-telescope/telescope.nvim"
+  use {
+    "nvim-telescope/telescope.nvim",
+    requires = {
+      { "nvim-lua/plenary.nvim" },
+      { "nvim-lua/popup.nvim" },
+      { "nvim-telescope/telescope-fzy-native.nvim" },
+      { "kyazdani42/nvim-web-devicons" },
+      { "nvim-telescope/telescope-file-browser.nvim" },
+      { "nvim-telescope/telescope-dap.nvim" },
+      { "nvim-telescope/telescope-ui-select.nvim" },
+      { "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
+    },
+  }
 
   -- Treesitter
   use {
     "nvim-treesitter/nvim-treesitter",
     run = ":TSUpdate",
+    requires = {
+      "nvim-treesitter/playground",
+      "nvim-treesitter/nvim-treesitter-refactor",
+      "nvim-treesitter/nvim-treesitter-textobjects",
+    },
   }
+
   use "JoosepAlviste/nvim-ts-context-commentstring"
 
   -- Git
-  use "lewis6991/gitsigns.nvim"
+  use {
+    "lewis6991/gitsigns.nvim",
+    requires = {
+      "nvim-lua/plenary.nvim",
+    },
+  }
+
+  use {
+    "folke/trouble.nvim",
+    requires = "kyazdani42/nvim-web-devicons",
+  }
+
+  use {
+    "NTBBloodbath/rest.nvim",
+    requires = { "nvim-lua/plenary.nvim" },
+  }
 
   -- multicursor
   use "mg979/vim-visual-multi"
+
+  -- use "feline-nvim/feline.nvim",
+  -- use "norcalli/nvim-colorizer.lua"
+  -- use "andymass/vim-matchup"
+  -- use "Pocco81/TrueZen.nvim"
+
+  -- use "neoscroll.nvim"
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
