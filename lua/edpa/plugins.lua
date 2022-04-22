@@ -50,13 +50,17 @@ return packer.startup(function(use)
 
   -- Navigation bar
   use "kyazdani42/nvim-tree.lua"
+
   -- Tabs bar
   use "akinsho/bufferline.nvim"
+  -- use "romgrk/barbar.nvim"
+
   -- Bottom bar
   use {
     "nvim-lualine/lualine.nvim",
     requires = { "kyazdani42/nvim-web-devicons", opt = true },
   }
+  -- use "feline-nvim/feline.nvim",
 
   -- Better quickfix window in Neovim, polish old quickfix window.
   use { "kevinhwang91/nvim-bqf", ft = "qf" }
@@ -80,7 +84,7 @@ return packer.startup(function(use)
   use "folke/which-key.nvim"
 
   -- Colorschemes
-  use 'folke/tokyonight.nvim'
+  use "folke/tokyonight.nvim"
 
   -- Completition
   use {
@@ -93,17 +97,24 @@ return packer.startup(function(use)
       "hrsh7th/cmp-nvim-lsp",
       "saadparwaiz1/cmp_luasnip",
       "onsails/lspkind-nvim",
+      "ray-x/cmp-treesitter",
+      "lukas-reineke/cmp-rg",
       -- snippets
       "L3MON4D3/LuaSnip",
       "windwp/nvim-autopairs",
     },
   }
 
+  use "weilbith/nvim-code-action-menu"
+
   -- Easily comment stuff
   use "numToStr/Comment.nvim"
 
   -- snippets
   use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
+
+  use "mfussenegger/nvim-dap"
+  use "theHamsta/nvim-dap-virtual-text"
 
   -- LSP
   use {
@@ -112,6 +123,7 @@ return packer.startup(function(use)
     "hrsh7th/cmp-nvim-lsp-signature-help",
     "jose-elias-alvarez/null-ls.nvim", -- for formatters and linters
     "tamago324/nlsp-settings.nvim", -- language server settings defined in json for
+    "ray-x/lsp_signature.nvim",
   }
 
   -- Telescope
@@ -120,8 +132,8 @@ return packer.startup(function(use)
     requires = {
       { "nvim-lua/plenary.nvim" },
       { "nvim-lua/popup.nvim" },
-      { "nvim-telescope/telescope-fzy-native.nvim" },
       { "kyazdani42/nvim-web-devicons" },
+      { "nvim-telescope/telescope-fzy-native.nvim" },
       { "nvim-telescope/telescope-file-browser.nvim" },
       { "nvim-telescope/telescope-dap.nvim" },
       { "nvim-telescope/telescope-ui-select.nvim" },
@@ -139,8 +151,6 @@ return packer.startup(function(use)
       "nvim-treesitter/nvim-treesitter-textobjects",
     },
   }
-
-  use "JoosepAlviste/nvim-ts-context-commentstring"
 
   -- Git
   use {
@@ -160,15 +170,67 @@ return packer.startup(function(use)
     requires = { "nvim-lua/plenary.nvim" },
   }
 
+  use "vim-test/vim-test"
+
+  -- Maximizes and restores the current window in Vim.
+  use "szw/vim-maximizer"
+
+  -- commentstring based on the cursor location in a file.
+  use "JoosepAlviste/nvim-ts-context-commentstring"
+
   -- multicursor
   use "mg979/vim-visual-multi"
 
-  -- use "feline-nvim/feline.nvim",
-  -- use "norcalli/nvim-colorizer.lua"
-  -- use "andymass/vim-matchup"
+  -- Highlight words and lines on the cursor for Neovim
+  use "nvim-cursorline"
+
+  use {
+    "wfxr/minimap.vim",
+    run = "cargo install --locked code-minimap"
+  }
+
+  use "simrat39/symbols-outline.nvim"
+
+  -- color highlighter
+  use "norcalli/nvim-colorizer.lua"
+  -- use "crivotz/nvim-colorizer.lua"
+
+  -- Peek lines just when you intend
+  use "nacro90/numb.nvim"
+
+  -- 📔 The interactive scratchpad for hackers.
+  use "metakirby5/codi.vim"
+
+  -- Hlsearch Lens for Neovim
+  use "kevinhwang91/nvim-hlslens"
+
+  -- even better % 👊 navigate and highlight matching words 👊 modern matchit and matchparen
+  use "andymass/vim-matchup"
+
+  -- EditorConfig plugin for Vim
+  use "editorconfig/editorconfig-vim"
+
   -- use "Pocco81/TrueZen.nvim"
 
-  -- use "neoscroll.nvim"
+  -- Smooth scrolling neovim plugin written in lua
+  use 'karb94/neoscroll.nvim'
+
+  -- Gain the power to move lines and blocks and auto-indent them!
+  use 'fedepujol/move.nvim'
+
+  use "github/copilot.vim"
+
+  use "christoomey/vim-tmux-navigator"
+
+  use "rcarriga/nvim-notify"
+
+  -- use "numToStr/FTerm.nvim"
+
+  -- ✅ Highlight, list and search todo comments in your projects
+  use {
+    "folke/todo-comments.nvim",
+    requires = "nvim-lua/plenary.nvim"
+  }
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
