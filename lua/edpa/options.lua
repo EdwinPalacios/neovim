@@ -1,4 +1,5 @@
 local opt = vim.opt
+local g = vim.g
 
 -- :help options1
 opt.hidden = true -- When on a buffer becomes hidden when it is abandoned
@@ -49,3 +50,9 @@ opt.whichwrap:append "<>[]hl"
 
 -- which allows the user to denote what should or should not be treated as part of a word
 opt.iskeyword:append({ ',', '_', '@', '.', '-' })
+
+-- minimap
+g.minimap_width = 10
+g.minimap_auto_start = 0
+g.minimap_auto_start_win_enter = 0
+g.minimap_highlight_range = 1
