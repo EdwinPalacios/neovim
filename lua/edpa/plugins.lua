@@ -182,7 +182,7 @@ return packer.startup(function(use)
   use "mg979/vim-visual-multi"
 
   -- Highlight words and lines on the cursor for Neovim
-  use "nvim-cursorline"
+  use "yamatsum/nvim-cursorline"
 
   use {
     "wfxr/minimap.vim",
