@@ -53,14 +53,12 @@ return packer.startup(function(use)
 
   -- Tabs bar
   use "akinsho/bufferline.nvim"
-  -- use "romgrk/barbar.nvim"
 
   -- Bottom bar
   use {
     "nvim-lualine/lualine.nvim",
     requires = { "kyazdani42/nvim-web-devicons", opt = true },
   }
-  -- use "feline-nvim/feline.nvim",
 
   -- Better quickfix window in Neovim, polish old quickfix window.
   use { "kevinhwang91/nvim-bqf", ft = "qf" }
