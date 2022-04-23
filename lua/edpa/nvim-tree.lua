@@ -1,6 +1,17 @@
+local g = vim.g
+
 -- following options are the default
 -- each of these are documented in `:help nvim-tree.OPTION_NAME`
-vim.g.nvim_tree_icons = {
+
+g.nvim_tree_root_folder_modifier = table.concat { ":t:gs?$?/..", string.rep(" ", 1000), "?:gs?^??" }
+
+g.nvim_tree_show_icons = {
+  folders = 1,
+  files = 1,
+  git = 1,
+}
+
+g.nvim_tree_icons = {
   default = "",
   symlink = "",
   git = {
@@ -48,14 +59,14 @@ nvim_tree.setup {
   open_on_setup_file = false,
   open_on_tab = false,
   sort_by = "name",
-  update_cwd = true,
+  update_cwd = false,
   view = {
-    width = 30,
+    width = 50,
     height = 30,
     side = "left",
     preserve_window_proportions = false,
     number = false,
-    auto_resize = true,
+    auto_resize = false,
     relativenumber = false,
     signcolumn = "yes",
     mappings = {
@@ -110,7 +121,7 @@ nvim_tree.setup {
   },
   filters = {
     dotfiles = false,
-    custom = {},
+    custom = { "node_modules", "\\.cache" },
     exclude = {},
   },
   git = {
