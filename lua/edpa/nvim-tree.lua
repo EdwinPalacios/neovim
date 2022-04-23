@@ -45,6 +45,23 @@ if not config_status_ok then
   return
 end
 
+local function start_telescope(telescope_mode)
+  local node = require("nvim-tree.lib").get_node_at_cursor()
+  local abspath = node.link_to or node.absolute_path
+  local is_folder = node.open ~= nil
+  local basedir = is_folder and abspath or vim.fn.fnamemodify(abspath, ":h")
+  require("telescope.builtin")[telescope_mode] {
+    cwd = basedir,
+  }
+end
+
+local function telescope_find_files(_)
+  start_telescope "find_files"
+end
+local function telescope_live_grep(_)
+  start_telescope "live_grep"
+end
+
 local tree_cb = nvim_tree_config.nvim_tree_callback
 
 nvim_tree.setup {
@@ -61,7 +78,7 @@ nvim_tree.setup {
   sort_by = "name",
   update_cwd = false,
   view = {
-    width = 50,
+    width = 40,
     height = 30,
     side = "left",
     preserve_window_proportions = false,
@@ -75,6 +92,8 @@ nvim_tree.setup {
         { key = { "l", "<CR>", "o" }, cb = tree_cb "edit" },
         { key = "h", cb = tree_cb "close_node" },
         { key = "v", cb = tree_cb "vsplit" },
+        { key = "gtf", action = "telescope_find_files", action_cb = telescope_find_files },
+        { key = "gtg", action = "telescope_live_grep", action_cb = telescope_live_grep },
       },
     },
   },
