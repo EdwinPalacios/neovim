@@ -52,7 +52,12 @@ return packer.startup(function(use)
   use "kyazdani42/nvim-tree.lua"
 
   -- Tabs bar
-  use "akinsho/bufferline.nvim"
+  use {
+    'akinsho/bufferline.nvim',
+    tag = "*",
+    requires = 'kyazdani42/nvim-web-devicons'
+  }
+
 
   -- Bottom bar
   use {
