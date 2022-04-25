@@ -58,7 +58,6 @@ return packer.startup(function(use)
     requires = 'kyazdani42/nvim-web-devicons'
   }
 
-
   -- Bottom bar
   use {
     "nvim-lualine/lualine.nvim",
