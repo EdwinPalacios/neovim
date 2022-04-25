@@ -4,5 +4,6 @@ if not status_ok then
 end
 
 require "edpa.lsp.lsp-installer"
+require "edpa.lsp.lsp-signature"
 require("edpa.lsp.handlers").setup()
 require "edpa.lsp.null-ls"
