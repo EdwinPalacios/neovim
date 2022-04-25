@@ -5,7 +5,7 @@ end
 
 lspsignature.setup({
   bind = true,
-  doc_lines = 10,
+  doc_lines = 0,
   floating_window = true,
   fix_pos = true,
   hint_enable = true,
