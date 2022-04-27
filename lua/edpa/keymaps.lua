@@ -60,7 +60,7 @@ keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
 keymap("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 
-keymap('n', '<F8>', ':MinimapToggle<CR>', opts)
+keymap("n", "<F8>", ":MinimapToggle<CR>", opts)
 
 -- Terminal --
 -- Better terminal navigation

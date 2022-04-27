@@ -49,7 +49,7 @@ opt.shortmess:append "sI"
 opt.whichwrap:append "<>[]hl"
 
 -- which allows the user to denote what should or should not be treated as part of a word
-opt.iskeyword:append({ ',', '_', '@', '.', '-' })
+opt.iskeyword:append({ ",", "_", "@", ".", "-" })
 
 -- minimap
 g.minimap_width = 10

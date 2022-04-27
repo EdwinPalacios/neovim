@@ -35,8 +35,8 @@ local diagnostics = {
 local lsp = {
 	-- Lsp server name .
 	function()
-		local msg = 'No active Lsp'
-		local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
+		local msg = "No active Lsp"
+		local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
 		local clients = vim.lsp.get_active_clients()
 		if next(clients) == nil then
 			return msg
@@ -49,7 +49,7 @@ local lsp = {
 		end
 		return msg
 	end,
-	icon = ' LSP:',
+	icon = " LSP:",
 }
 
 local diff = {

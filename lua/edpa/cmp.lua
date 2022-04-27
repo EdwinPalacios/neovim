@@ -114,8 +114,8 @@ cmp.setup {
     { name = "luasnip" },
     { name = "buffer" },
     { name = "path" },
-    { name = 'treesitter' },
-    { name = 'rg' }
+    { name = "treesitter" },
+    { name = "rg" }
   },
   confirm_opts = {
     behavior = cmp.ConfirmBehavior.Replace,
@@ -133,7 +133,7 @@ cmp.setup {
 }
 
 -- enables autocomplete for the command line
-cmp.setup.cmdline(':', {
+cmp.setup.cmdline(":", {
   sources = {
     { name = "cmdline" },
   },

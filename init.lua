@@ -13,6 +13,10 @@ local core_modules = {
   "edpa.bufferline",
   "edpa.lualine",
   "edpa.harpoon",
+  "edpa.alpha",
+  "edpa.toggleterm",
+  "edpa.project",
+  "edpa.indentline",
 
   "edpa.cmp",
   "edpa.lsp",
@@ -21,11 +25,8 @@ local core_modules = {
   "edpa.autopairs",
   "edpa.comment",
   "edpa.gitsigns",
-  "edpa.toggleterm",
-  "edpa.project",
   "edpa.impatient",
-  "edpa.indentline",
-  "edpa.alpha",
+
   "edpa.whichkey",
   "edpa.autocommands"
 }

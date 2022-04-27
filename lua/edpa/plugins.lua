@@ -53,9 +53,9 @@ return packer.startup(function(use)
 
   -- Tabs bar
   use {
-    'akinsho/bufferline.nvim',
+    "akinsho/bufferline.nvim",
     tag = "*",
-    requires = 'kyazdani42/nvim-web-devicons'
+    requires = "kyazdani42/nvim-web-devicons"
   }
 
   -- Bottom bar
@@ -76,11 +76,19 @@ return packer.startup(function(use)
     },
   }
 
-  use "goolord/alpha-nvim"
+  -- Dashboard
+  use {
+    "goolord/alpha-nvim",
+    requires = { "kyazdani42/nvim-web-devicons" }
+  }
+
+  -- Toggle terminal
+  use "akinsho/toggleterm.nvim"
+
+  -- create projects
+  use "ahmedkhalf/project.nvim"
 
   use "moll/vim-bbye"
-  use "akinsho/toggleterm.nvim"
-  use "ahmedkhalf/project.nvim"
   use "lukas-reineke/indent-blankline.nvim"
   use "antoinemadec/FixCursorHold.nvim" -- This is needed to fix lsp doc highlight
   use "folke/which-key.nvim"
@@ -215,10 +223,10 @@ return packer.startup(function(use)
   -- use "Pocco81/TrueZen.nvim"
 
   -- Smooth scrolling neovim plugin written in lua
-  use 'karb94/neoscroll.nvim'
+  use "karb94/neoscroll.nvim"
 
   -- Gain the power to move lines and blocks and auto-indent them!
-  use 'fedepujol/move.nvim'
+  use "fedepujol/move.nvim"
 
   use "github/copilot.vim"
 
