@@ -131,10 +131,10 @@ return packer.startup(function(use)
     "neovim/nvim-lspconfig", -- enable LSP
     "williamboman/nvim-lsp-installer", -- simple to use language server installer
     "hrsh7th/cmp-nvim-lsp-signature-help",
+    "ray-x/lsp_signature.nvim",
     "jose-elias-alvarez/null-ls.nvim", -- for formatters and linters
     "jose-elias-alvarez/nvim-lsp-ts-utils",
     "tamago324/nlsp-settings.nvim", -- language server settings defined in json for
-    "ray-x/lsp_signature.nvim",
   }
 
   -- Telescope
@@ -200,6 +200,7 @@ return packer.startup(function(use)
     run = "cargo install --locked code-minimap"
   }
 
+  -- :SymbolsOutline
   use "simrat39/symbols-outline.nvim"
 
   -- color highlighter
