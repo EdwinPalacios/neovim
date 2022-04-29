@@ -105,6 +105,8 @@ cmp.setup {
         luasnip = "[Snippet]",
         buffer = "[Buffer]",
         path = "[Path]",
+        treesitter = "[Treesitter]",
+        rg = "[Ripgrep]",
       })[entry.source.name]
       return vim_item
     end,
