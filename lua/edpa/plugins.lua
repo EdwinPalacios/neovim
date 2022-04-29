@@ -91,7 +91,11 @@ return packer.startup(function(use)
   use "moll/vim-bbye"
   use "lukas-reineke/indent-blankline.nvim"
   use "antoinemadec/FixCursorHold.nvim" -- This is needed to fix lsp doc highlight
+
+
   use "folke/which-key.nvim"
+  -- :Legendary
+  use "mrjones2014/legendary.nvim"
 
   -- Colorschemes
   use "folke/tokyonight.nvim"
