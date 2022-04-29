@@ -130,7 +130,7 @@ return packer.startup(function(use)
   use {
     "neovim/nvim-lspconfig", -- enable LSP
     "williamboman/nvim-lsp-installer", -- simple to use language server installer
-    "hrsh7th/cmp-nvim-lsp-signature-help",
+    -- "hrsh7th/cmp-nvim-lsp-signature-help",
     "ray-x/lsp_signature.nvim",
     "jose-elias-alvarez/null-ls.nvim", -- for formatters and linters
     "jose-elias-alvarez/nvim-lsp-ts-utils",
