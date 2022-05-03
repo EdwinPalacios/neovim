@@ -94,8 +94,15 @@ return packer.startup(function(use)
 
 
   use "folke/which-key.nvim"
-  -- :Legendary
-  use "mrjones2014/legendary.nvim"
+
+  -- Legendary
+  use {
+    "mrjones2014/legendary.nvim",
+    opt = true,
+    keys = { [[<C-p>]] },
+    wants = { "dressing.nvim" },
+    requires = { "stevearc/dressing.nvim" },
+  }
 
   -- Colorschemes
   use "folke/tokyonight.nvim"
@@ -128,8 +135,30 @@ return packer.startup(function(use)
   -- snippets
   use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
 
-  use "mfussenegger/nvim-dap"
-  use "theHamsta/nvim-dap-virtual-text"
+  -- Debugging
+  use {
+    "mfussenegger/nvim-dap",
+    opt = true,
+    -- event = "BufReadPre",
+    keys = { [[<leader>d]] },
+    module = { "dap" },
+    wants = { "nvim-dap-virtual-text", "DAPInstall.nvim", "nvim-dap-ui", "nvim-dap-python", "which-key.nvim" },
+    requires = {
+      "alpha2phi/DAPInstall.nvim",
+      "theHamsta/nvim-dap-virtual-text",
+      "rcarriga/nvim-dap-ui",
+      "mfussenegger/nvim-dap-python",
+      "nvim-telescope/telescope-dap.nvim",
+      { "jbyuki/one-small-step-for-vimkind", module = "osv" },
+    }
+  }
+
+  -- vimspector
+  use {
+    "puremourning/vimspector",
+    cmd = { "VimspectorInstall", "VimspectorUpdate" },
+    fn = { "vimspector#Launch()", "vimspector#ToggleBreakpoint", "vimspector#Continue" }
+  }
 
   -- LSP
   use {
@@ -167,12 +196,10 @@ return packer.startup(function(use)
       "nvim-treesitter/playground",
       "nvim-treesitter/nvim-treesitter-refactor",
       "nvim-treesitter/nvim-treesitter-textobjects",
+      "windwp/nvim-ts-autotag",
       "danymat/neogen", -- A better annotation generator.
     },
   }
-
-  -- Use treesitter to auto close and auto rename html tag
-  use "windwp/nvim-ts-autotag"
 
   -- Git
   use {

@@ -181,6 +181,31 @@ local mappings = {
     h = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", "Horizontal" },
     v = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", "Vertical" },
   },
+
+  j = {
+    name = "Jump",
+    a = { "<Cmd>lua require('harpoon.mark').add_file()<Cr>", "Add File" },
+    m = { "<Cmd>lua require('harpoon.ui').toggle_quick_menu()<Cr>", "UI Menu" },
+    c = { "<Cmd>lua require('harpoon.cmd-ui').toggle_quick_menu()<Cr>", "Command Menu" },
+  },
+
+  v = {
+    name = "Vimspector",
+    G = { "<cmd>lua require('config.vimspector').generate_debug_profile()<cr>", "Generate Debug Profile" },
+    I = { "<cmd>VimspectorInstall<cr>", "Install" },
+    U = { "<cmd>VimspectorUpdate<cr>", "Update" },
+    R = { "<cmd>call vimspector#RunToCursor()<cr>", "Run to Cursor" },
+    c = { "<cmd>call vimspector#Continue()<cr>", "Continue" },
+    i = { "<cmd>call vimspector#StepInto()<cr>", "Step Into" },
+    o = { "<cmd>call vimspector#StepOver()<cr>", "Step Over" },
+    s = { "<cmd>call vimspector#Launch()<cr>", "Start" },
+    t = { "<cmd>call vimspector#ToggleBreakpoint()<cr>", "Toggle Breakpoint" },
+    u = { "<cmd>call vimspector#StepOut()<cr>", "Step Out" },
+    S = { "<cmd>call vimspector#Stop()<cr>", "Stop" },
+    r = { "<cmd>call vimspector#Restart()<cr>", "Restart" },
+    x = { "<cmd>VimspectorReset<cr>", "Reset" },
+    H = { "<cmd>lua require('config.vimspector').toggle_human_mode()<cr>", "Toggle HUMAN mode" },
+  }
 }
 
 which_key.setup(setup)
