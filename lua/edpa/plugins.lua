@@ -113,6 +113,7 @@ return packer.startup(function(use)
       "onsails/lspkind-nvim",
       "ray-x/cmp-treesitter",
       "lukas-reineke/cmp-rg",
+      "hrsh7th/cmp-emoji",
       -- snippets
       "L3MON4D3/LuaSnip",
       "windwp/nvim-autopairs",

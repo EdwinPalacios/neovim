@@ -107,6 +107,7 @@ cmp.setup {
         path = "[Path]",
         treesitter = "[Treesitter]",
         rg = "[Ripgrep]",
+        emoji = "[Emoji]",
       })[entry.source.name]
       return vim_item
     end,
@@ -118,6 +119,7 @@ cmp.setup {
     { name = "path" },
     { name = "treesitter" },
     { name = "rg" },
+    { name = 'emoji' },
   },
   confirm_opts = {
     behavior = cmp.ConfirmBehavior.Replace,
