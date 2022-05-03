@@ -136,9 +136,11 @@ return packer.startup(function(use)
     "williamboman/nvim-lsp-installer", -- simple to use language server installer
     -- "hrsh7th/cmp-nvim-lsp-signature-help",
     "ray-x/lsp_signature.nvim",
+    "arkav/lualine-lsp-progress",
     "jose-elias-alvarez/null-ls.nvim", -- for formatters and linters
     "jose-elias-alvarez/nvim-lsp-ts-utils",
     "tamago324/nlsp-settings.nvim", -- language server settings defined in json for
+    "glepnir/lspsaga.nvim", -- TODO: configurar
   }
 
   -- Telescope
@@ -164,8 +166,12 @@ return packer.startup(function(use)
       "nvim-treesitter/playground",
       "nvim-treesitter/nvim-treesitter-refactor",
       "nvim-treesitter/nvim-treesitter-textobjects",
+      "danymat/neogen", -- A better annotation generator.
     },
   }
+
+  -- Use treesitter to auto close and auto rename html tag
+  use "windwp/nvim-ts-autotag"
 
   -- Git
   use {
@@ -204,8 +210,10 @@ return packer.startup(function(use)
     run = "cargo install --locked code-minimap"
   }
 
+  -- TODO: listado de funciones
   -- :SymbolsOutline
   use "simrat39/symbols-outline.nvim"
+  -- use "stevearc/aerial.nvim"
 
   -- color highlighter
   use "norcalli/nvim-colorizer.lua"

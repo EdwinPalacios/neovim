@@ -52,6 +52,22 @@ local lsp = {
 	icon = " LSP:",
 }
 
+local conf_lsp_progress = {
+	"lsp_progress",
+	display_components = { "lsp_client_name", "spinner", { "title", "percentage", "message" } },
+	separators = {
+		component = " ",
+		progress = " | ",
+		percentage = { pre = "", post = "%% " },
+		title = { pre = "", post = ": " },
+		lsp_client_name = { pre = "[", post = "]" },
+		spinner = { pre = "", post = "" },
+		message = { pre = "(", post = ")", commenced = "In Progress", completed = "Completed" },
+	},
+	timer = { progress_enddelay = 500, spinner = 1000, lsp_client_name_enddelay = 1000 },
+	spinner_symbols = { "🌑 ", "🌒 ", "🌓 ", "🌔 ", "🌕 ", "🌖 ", "🌗 ", "🌘 " },
+}
+
 local diff = {
 	"diff",
 	colored = false,
@@ -95,7 +111,7 @@ lualine.setup({
 	},
 	sections = {
 		lualine_a = { mode, branch, diagnostics },
-		lualine_b = { filesize, lsp },
+		lualine_b = { filesize, conf_lsp_progress, },
 		lualine_c = {},
 		lualine_x = { "encoding", diff, spaces, filetype },
 		lualine_y = { location },
