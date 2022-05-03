@@ -46,6 +46,28 @@ local function lsp_client()
 	return "[" .. table.concat(buf_client_names, ", ") .. "]"
 end
 
+local function lsp_progress(_, is_active)
+	if not is_active then
+		return
+	end
+	local messages = vim.lsp.util.get_progress_messages()
+	if #messages == 0 then
+		return ""
+	end
+	local status = {}
+	for _, msg in pairs(messages) do
+		local title = ""
+		if msg.title then
+			title = msg.title
+		end
+		table.insert(status, (msg.percentage or 0) .. "%% " .. title)
+	end
+	local spinners = { "⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏" }
+	local ms = vim.loop.hrtime() / 1000000
+	local frame = math.floor(ms / 120) % #spinners
+	return table.concat(status, "  ") .. " " .. spinners[frame + 1]
+end
+
 local conf_lsp_progress = {
 	"lsp_progress",
 	display_components = { "lsp_client_name", "spinner", { "title", "percentage", "message" } },
@@ -106,7 +128,7 @@ lualine.setup({
 	},
 	sections = {
 		lualine_a = { mode, branch, diagnostics },
-		lualine_b = { filesize, lsp_client, conf_lsp_progress, },
+		lualine_b = { filesize, lsp_client, lsp_progress, },
 		lualine_c = {},
 		lualine_x = { "encoding", diff, spaces, filetype },
 		lualine_y = { location },

@@ -136,7 +136,7 @@ return packer.startup(function(use)
     "williamboman/nvim-lsp-installer", -- simple to use language server installer
     -- "hrsh7th/cmp-nvim-lsp-signature-help",
     "ray-x/lsp_signature.nvim",
-    "arkav/lualine-lsp-progress",
+    "arkav/lualine-lsp-progress", -- TODO: pendiente por verificar
     "jose-elias-alvarez/null-ls.nvim", -- for formatters and linters
     "jose-elias-alvarez/nvim-lsp-ts-utils",
     "tamago324/nlsp-settings.nvim", -- language server settings defined in json for
