@@ -32,27 +32,19 @@ local diagnostics = {
 	always_visible = true,
 }
 
-local lsp = {
-	-- Lsp server name .
-	function()
-		local msg = "No active Lsp"
-		local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
-		local clients = vim.lsp.get_active_clients()
-		if next(clients) == nil then
-			return msg
+local function lsp_client()
+	local buf_clients = vim.lsp.buf_get_clients()
+	if next(buf_clients) == nil then
+		return ""
+	end
+	local buf_client_names = {}
+	for _, client in pairs(buf_clients) do
+		if client.name ~= "null-ls" then
+			table.insert(buf_client_names, client.name)
 		end
-		for _, client in ipairs(clients) do
-			local filetypes = client.config.filetypes
-			if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
-				return client.name
-			end
-		end
-		return msg
-	end,
-	icon = " LSP:",
-}
-
-local lsp_status = require('lsp-status');
+	end
+	return "[" .. table.concat(buf_client_names, ", ") .. "]"
+end
 
 local conf_lsp_progress = {
 	"lsp_progress",
@@ -114,7 +106,7 @@ lualine.setup({
 	},
 	sections = {
 		lualine_a = { mode, branch, diagnostics },
-		lualine_b = { filesize, lsp_status.status, conf_lsp_progress, },
+		lualine_b = { filesize, lsp_client, conf_lsp_progress, },
 		lualine_c = {},
 		lualine_x = { "encoding", diff, spaces, filetype },
 		lualine_y = { location },

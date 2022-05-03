@@ -137,7 +137,6 @@ return packer.startup(function(use)
     -- "hrsh7th/cmp-nvim-lsp-signature-help",
     "ray-x/lsp_signature.nvim",
     "arkav/lualine-lsp-progress",
-    "nvim-lua/lsp-status.nvim",
     "jose-elias-alvarez/null-ls.nvim", -- for formatters and linters
     "jose-elias-alvarez/nvim-lsp-ts-utils",
     "tamago324/nlsp-settings.nvim", -- language server settings defined in json for
