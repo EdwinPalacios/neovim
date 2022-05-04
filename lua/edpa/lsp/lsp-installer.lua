@@ -1,33 +1,36 @@
-local status_ok, lsp_installer = pcall(require, "nvim-lsp-installer")
+local status_ok, lsp_installer_servers = pcall(require, "nvim-lsp-installer.servers")
 
 if not status_ok then
 	return
 end
 
--- Register a handler that will be called for all installed servers.
--- Alternatively, you may also register handlers on specific server instances instead (see example below).
-lsp_installer.on_server_ready(function(server)
-	local opts = {
-		on_attach = require("edpa.lsp.handlers").on_attach,
-		capabilities = require("edpa.lsp.handlers").capabilities,
-	}
+local servers = {
+	html = {},
+	jsonls = require("edpa.lsp.settings.jsonls"),
+	pyright = {},
+	sumneko_lua = require("edpa.lsp.settings.sumneko_lua"),
+	tsserver = { disable_formatting = true },
+}
 
-	if server.name == "jsonls" then
-		local jsonls_opts = require("edpa.lsp.settings.jsonls")
-		opts = vim.tbl_deep_extend("force", jsonls_opts, opts)
+local options = {
+	on_attach = require("edpa.lsp.handlers").on_attach,
+	capabilities = require("edpa.lsp.handlers").capabilities,
+}
+
+for server_name, _ in pairs(servers) do
+	local server_available, server = lsp_installer_servers.get_server(server_name)
+
+	if server_available then
+		server:on_ready(function()
+			local opts = vim.tbl_deep_extend("force", options, servers[server.name] or {})
+			server:setup(opts)
+		end)
+
+		if not server:is_installed() then
+			vim.notify("Installing " .. server.name, vim.log.levels.INFO, { title = "LSP" })
+			server:install()
+		end
+	else
+		vim.notify(server, vim.log.levels.ERROR, { title = "LSP" })
 	end
-
-	if server.name == "sumneko_lua" then
-		local sumneko_opts = require("edpa.lsp.settings.sumneko_lua")
-		opts = vim.tbl_deep_extend("force", sumneko_opts, opts)
-	end
-
-	if server.name == "tsserver" then
-		local tsserver_opts = require("edpa.lsp.settings.tsserver")
-		opts = vim.tbl_deep_extend("force", tsserver_opts, opts)
-	end
-
-	-- This setup() function is exactly the same as lspconfig's setup function.
-	-- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
-	server:setup(opts)
-end)
+end

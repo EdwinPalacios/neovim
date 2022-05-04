@@ -68,23 +68,6 @@ local function lsp_progress(_, is_active)
 	return table.concat(status, "  ") .. " " .. spinners[frame + 1]
 end
 
-local conf_lsp_progress = {
-	"lsp_progress",
-	display_components = { "lsp_client_name", "spinner", { "title", "percentage", "message" } },
-	separators = {
-		component = " ",
-		progress = " | ",
-		percentage = { pre = "", post = "%% " },
-		title = { pre = "", post = ": " },
-		lsp_client_name = { pre = "[", post = "]" },
-		spinner = { pre = "", post = "" },
-		message = { pre = "(", post = ")" },
-	},
-	timer = { progress_enddelay = 500, spinner = 1000, lsp_client_name_enddelay = 1000 },
-	spinner_symbols = { "🌑 ", "🌒 ", "🌓 ", "🌔 ", "🌕 ", "🌖 ", "🌗 ", "🌘 " },
-	message = { commenced = 'In Progress', completed = 'Completed' },
-}
-
 local diff = {
 	"diff",
 	colored = false,

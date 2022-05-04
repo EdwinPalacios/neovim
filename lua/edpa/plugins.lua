@@ -41,12 +41,15 @@ packer.init {
 -- Install your plugins here
 return packer.startup(function(use)
 
-  -- Base packages
+  -- Performance
   use "lewis6991/impatient.nvim"
   use "nathom/filetype.nvim"
 
   -- Have packer manage itself
   use "wbthomason/packer.nvim"
+
+  -- Colorschemes
+  use "folke/tokyonight.nvim"
 
   -- Navigation bar
   use "kyazdani42/nvim-tree.lua"
@@ -64,6 +67,12 @@ return packer.startup(function(use)
     requires = { "kyazdani42/nvim-web-devicons", opt = true },
   }
 
+  -- Dashboard
+  use {
+    "goolord/alpha-nvim",
+    requires = { "kyazdani42/nvim-web-devicons" }
+  }
+
   -- Better quickfix window in Neovim, polish old quickfix window.
   use { "kevinhwang91/nvim-bqf", ft = "qf" }
 
@@ -76,12 +85,6 @@ return packer.startup(function(use)
     },
   }
 
-  -- Dashboard
-  use {
-    "goolord/alpha-nvim",
-    requires = { "kyazdani42/nvim-web-devicons" }
-  }
-
   -- Toggle terminal
   use "akinsho/toggleterm.nvim"
 
@@ -92,24 +95,22 @@ return packer.startup(function(use)
   use "lukas-reineke/indent-blankline.nvim"
   use "antoinemadec/FixCursorHold.nvim" -- This is needed to fix lsp doc highlight
 
-
   use "folke/which-key.nvim"
 
   -- Legendary
   use {
     "mrjones2014/legendary.nvim",
-    opt = true,
     keys = { [[<C-p>]] },
-    wants = { "dressing.nvim" },
     requires = { "stevearc/dressing.nvim" },
+    config = function()
+      require("legendary").setup { include_builtin = true, auto_register_which_key = true }
+    end,
   }
 
-  -- Colorschemes
-  use "folke/tokyonight.nvim"
-
-  -- Completition
+  -- Completion
   use {
     "hrsh7th/nvim-cmp",
+    event = "InsertEnter",
     requires = {
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",
@@ -123,8 +124,14 @@ return packer.startup(function(use)
       "hrsh7th/cmp-emoji",
       -- snippets
       "L3MON4D3/LuaSnip",
-      "windwp/nvim-autopairs",
+      "rafamadriz/friendly-snippets"
     },
+  }
+
+  -- Auto pairs
+  use {
+    "windwp/nvim-autopairs",
+    module = { "nvim-autopairs.completion.cmp", "nvim-autopairs" }
   }
 
   use "weilbith/nvim-code-action-menu"
@@ -132,13 +139,9 @@ return packer.startup(function(use)
   -- Easily comment stuff
   use "numToStr/Comment.nvim"
 
-  -- snippets
-  use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
-
   -- Debugging
   use {
     "mfussenegger/nvim-dap",
-    opt = true,
     -- event = "BufReadPre",
     keys = { [[<leader>d]] },
     module = { "dap" },
@@ -163,14 +166,31 @@ return packer.startup(function(use)
   -- LSP
   use {
     "neovim/nvim-lspconfig", -- enable LSP
-    "williamboman/nvim-lsp-installer", -- simple to use language server installer
-    -- "hrsh7th/cmp-nvim-lsp-signature-help",
-    "ray-x/lsp_signature.nvim",
-    "arkav/lualine-lsp-progress", -- TODO: pendiente por verificar
-    "jose-elias-alvarez/null-ls.nvim", -- for formatters and linters
-    "jose-elias-alvarez/nvim-lsp-ts-utils",
-    "tamago324/nlsp-settings.nvim", -- language server settings defined in json for
-    "glepnir/lspsaga.nvim", -- TODO: configurar
+    event = "VimEnter",
+    requires = {
+      "williamboman/nvim-lsp-installer", -- simple to use language server installer
+      "RRethy/vim-illuminate",
+      "jose-elias-alvarez/null-ls.nvim", -- for formatters and linters
+      -- "jose-elias-alvarez/nvim-lsp-ts-utils",
+      "jose-elias-alvarez/typescript.nvim",
+      {
+        "j-hui/fidget.nvim",
+        config = function()
+          require("fidget").setup {}
+        end,
+      },
+      -- "hrsh7th/cmp-nvim-lsp-signature-help", -- TODO: simple version
+      "ray-x/lsp_signature.nvim",
+      -- "tamago324/nlsp-settings.nvim", -- language server settings defined in json for
+      "b0o/schemastore.nvim",
+      {
+        "tami5/lspsaga.nvim",
+        cmd = { "Lspsaga" },
+        config = function()
+          require("lspsaga").setup {}
+        end,
+      }
+    }
   }
 
   -- Telescope
@@ -212,6 +232,12 @@ return packer.startup(function(use)
   use {
     "folke/trouble.nvim",
     requires = "kyazdani42/nvim-web-devicons",
+    cmd = { "TroubleToggle", "Trouble" },
+    config = function()
+      require("trouble").setup {
+        use_diagnostic_signs = true,
+      }
+    end,
   }
 
   use {

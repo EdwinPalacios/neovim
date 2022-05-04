@@ -62,6 +62,9 @@ keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 
 keymap("n", "<F8>", ":MinimapToggle<CR>", opts)
 
+-- legendary
+keymap("n", "<C-p>", "<cmd>lua require('legendary').find()<CR>", opts)
+
 -- Terminal --
 -- Better terminal navigation
 -- keymap("t", "<C-h>", "<C-\\><C-N><C-w>h", term_opts)
