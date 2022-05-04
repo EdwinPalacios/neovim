@@ -100,7 +100,6 @@ return packer.startup(function(use)
   -- Legendary
   use {
     "mrjones2014/legendary.nvim",
-    keys = { [[<C-p>]] },
     requires = { "stevearc/dressing.nvim" },
     config = function()
       require("legendary").setup { include_builtin = true, auto_register_which_key = true }
