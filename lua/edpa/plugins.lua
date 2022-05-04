@@ -110,7 +110,6 @@ return packer.startup(function(use)
   -- Completion
   use {
     "hrsh7th/nvim-cmp",
-    event = "InsertEnter",
     requires = {
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",
@@ -142,7 +141,7 @@ return packer.startup(function(use)
   -- Debugging
   use {
     "mfussenegger/nvim-dap",
-    -- event = "BufReadPre",
+
     keys = { [[<leader>d]] },
     module = { "dap" },
     wants = { "nvim-dap-virtual-text", "DAPInstall.nvim", "nvim-dap-ui", "nvim-dap-python", "which-key.nvim" },
@@ -166,7 +165,6 @@ return packer.startup(function(use)
   -- LSP
   use {
     "neovim/nvim-lspconfig", -- enable LSP
-    event = "VimEnter",
     requires = {
       "williamboman/nvim-lsp-installer", -- simple to use language server installer
       "RRethy/vim-illuminate",

@@ -31,13 +31,13 @@ First we'll fix copy/paste
 
 - On Ubuntu
 
-  ```
+  ```bash
   sudo apt install xsel
   ```
 
 - On Arch Linux
 
-  ```
+  ```bash
   sudo pacman -S xsel
   ```
 
@@ -45,24 +45,38 @@ Next we need to install python support (node is optional)
 
 - Neovim python support
 
-  ```
+  ```bash
   pip install pynvim
   ```
 
 - Neovim node support
 
-  ```
+  ```bash
   npm i -g neovim
   ```
 ---
 
 - Neovim Javascript & Typescript enable lsp
 
-  ```
+  ```bash
   npm install -g typescript typescript-language-server eslint eslint-language-server prettier
   ```
-
+  ```bash
   npm install -g vscode-html-languageserver-bin
+  ```
+---
+
+- Uninstall
+
+  Uninstalling is as simple as removing the nvim configuration directories.
+
+  ```bash
+  rm -rf ~/.config/nvim
+  rm -rf ~/.local/share/nvim
+  rm -rf ~/.cache/nvim
+  ```
+---
+
 
 **NOTE** make sure you have [node](https://nodejs.org/en/) installed, I recommend a node manager like [fnm](https://github.com/Schniz/fnm).
 
