@@ -10,6 +10,7 @@ local servers = {
 	pyright = {},
 	sumneko_lua = require("edpa.lsp.settings.sumneko_lua"),
 	tsserver = { disable_formatting = true },
+	jdtls = {}
 }
 
 local options = {
