@@ -111,7 +111,7 @@ lualine.setup({
 	},
 	sections = {
 		lualine_a = { mode, branch, diagnostics },
-		lualine_b = { filesize, { lsp_client, icon = " " }, lsp_progress, },
+		lualine_b = { filesize, { lsp_client, icon = " " } },
 		lualine_c = {},
 		lualine_x = { "encoding", diff, spaces, filetype },
 		lualine_y = { location },
