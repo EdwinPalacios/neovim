@@ -304,7 +304,10 @@ return packer.startup(function(use)
   -- ✅ Highlight, list and search todo comments in your projects
   use {
     "folke/todo-comments.nvim",
-    requires = "nvim-lua/plenary.nvim"
+    requires = "nvim-lua/plenary.nvim",
+    config = function()
+      require("todo-comments").setup {}
+    end
   }
 
   -- Automatically set up your configuration after cloning packer.nvim

@@ -6,11 +6,16 @@ end
 
 local servers = {
 	html = {},
+	lemminx = {}, -- XML
+	emmet_ls = {},
+	cssls = {},
+	tsserver = { disable_formatting = true },
+	eslint = {},
 	jsonls = require("edpa.lsp.settings.jsonls"),
 	pyright = {},
 	sumneko_lua = require("edpa.lsp.settings.sumneko_lua"),
-	tsserver = { disable_formatting = true },
-	jdtls = {}
+	jdtls = {},
+	intelephense = {},
 }
 
 local options = {
