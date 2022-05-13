@@ -140,10 +140,7 @@ return packer.startup(function(use)
   -- Debugging
   use {
     "mfussenegger/nvim-dap",
-
-    keys = { [[<leader>d]] },
     module = { "dap" },
-    wants = { "nvim-dap-virtual-text", "DAPInstall.nvim", "nvim-dap-ui", "nvim-dap-python", "which-key.nvim" },
     requires = {
       "alpha2phi/DAPInstall.nvim",
       "theHamsta/nvim-dap-virtual-text",
@@ -263,8 +260,13 @@ return packer.startup(function(use)
 
   -- TODO: listado de funciones
   -- :SymbolsOutline
-  use "simrat39/symbols-outline.nvim"
-  -- use "stevearc/aerial.nvim"
+  -- use "simrat39/symbols-outline.nvim"
+  use {
+    'stevearc/aerial.nvim',
+    config = function()
+      require('aerial').setup()
+    end
+  }
 
   -- color highlighter
   use {
