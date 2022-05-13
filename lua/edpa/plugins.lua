@@ -267,7 +267,12 @@ return packer.startup(function(use)
   -- use "stevearc/aerial.nvim"
 
   -- color highlighter
-  use "norcalli/nvim-colorizer.lua"
+  use {
+    "norcalli/nvim-colorizer.lua",
+    config = function()
+      require 'colorizer'.setup()
+    end
+  }
   -- use "crivotz/nvim-colorizer.lua"
 
   -- Peek lines just when you intend
