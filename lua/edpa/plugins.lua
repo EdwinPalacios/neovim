@@ -261,12 +261,8 @@ return packer.startup(function(use)
   -- TODO: listado de funciones
   -- :SymbolsOutline
   -- use "simrat39/symbols-outline.nvim"
-  use {
-    'stevearc/aerial.nvim',
-    config = function()
-      require('aerial').setup()
-    end
-  }
+  use "stevearc/aerial.nvim"
+
 
   -- color highlighter
   use {

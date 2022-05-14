@@ -17,7 +17,7 @@ local core_modules = {
   "edpa.toggleterm",
   "edpa.project",
   "edpa.indentline",
-
+  "edpa.aerial",
   "edpa.cmp",
   "edpa.lsp",
   "edpa.telescope",
